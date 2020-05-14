@@ -1,33 +1,50 @@
 #include <stdio.h>
-#define length 10
+#include <math.h>
+#define length 3
+#define nlength 7
 
 int main(void)
 {
 	
 	int array[length];
 	int i;
-	printf("Array");
+	printf("Calculator of three-dimensional vector length\n");
+	printf("To calculate vector's length you should enter vector's coordinates");
 	for (i = 0; i < length; i++) {
-		printf("Enter array's element a[%d] = ", i);
+		printf("\nEnter vector's coordinate [%d] = ", i+1);
 		scanf("%d", &array[i]);
 	}
+	printf("\nCoordinates of vector: \n");
 	for (i = 0; i < length; i++) {
 		printf("%d ", array[i]);
 	}
-	int max = 0;
+
+	int sum = 0;
 	for (i = 0; i < length; i++) {
-		if (array[max] < array[i]) {
-			max = i;
-		}
+		sum = sum + array[i]*array[i];
 	}
-	int min = 0;
-	for (i = 0; i < length; i++) {
-		if (array[min] > array[i]) {
-			min = i;
-		}
+	double result = sqrt(sum);
+	printf("\n\nVector's length = %.4f\n", result);
+
+
+	int arrayn[nlength];
+	printf("\n\n\nCalculator of n-dimensional vector length\n");
+	printf("To calculate vector's length you should enter vector's coordinates");
+	for (i = 0; i < nlength; i++) {
+		printf("\nEnter vector's coordinate [%d] = ", i + 1);
+		scanf("%d", &arrayn[i]);
 	}
-	printf("\nmax = %d", array[max]);
-	printf("\nmin = %d", array[min]);
+	printf("\nCoordinates of vector: \n");
+	for (i = 0; i < nlength; i++) {
+		printf("%d ", arrayn[i]);
+	}
+
+	int sumn = 0;
+	for (i = 0; i < nlength; i++) {
+		sumn = sumn + arrayn[i] * arrayn[i];
+	}
+	double resultn = sqrt(sumn);
+	printf("\n\nVector's length = %.4f\n", resultn);
 
 	getchar();
 }
