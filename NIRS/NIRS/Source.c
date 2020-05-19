@@ -1,50 +1,35 @@
 #include <stdio.h>
-#include <math.h>
-#define length 3
-#define nlength 7
+
+int inner(int ax, int ay, int az, int bx, int by, int bz) {
+	int result;
+	result = ax * bx + ay * by + az * bz;
+	return(result);
+}
 
 int main(void)
 {
 	
-	int array[length];
+	int a[2];
 	int i;
-	printf("Calculator of three-dimensional vector length\n");
-	printf("To calculate vector's length you should enter vector's coordinates");
-	for (i = 0; i < length; i++) {
-		printf("\nEnter vector's coordinate [%d] = ", i+1);
-		scanf("%d", &array[i]);
+	printf("Calculator of vector's inner and cross product\n");
+	printf("Please, enter vector's coordinates\n\n");
+	for (i = 0; i < 3; i++) {
+		printf("Enter a vector's coordinate [%d] = ", i+1);
+		scanf("%d", &a[i]);
 	}
-	printf("\nCoordinates of vector: \n");
-	for (i = 0; i < length; i++) {
-		printf("%d ", array[i]);
+	printf("\n");
+	int b[2];
+	for (i = 0; i < 3; i++) {
+		printf("Enter b vector's coordinate [%d] = ", i + 1);
+		scanf("%d", &b[i]);
 	}
+	int innerproduct = inner(a[0], a[1], a[2], b[0], b[1], b[2]);
+	int icross = a[1] * b[2] - a[2] * b[1];
+	int jcross = a[2] * b[0] - a[0] * b[2];
+	int kcross = a[0] * b[1] - a[1] * b[0];
 
-	int sum = 0;
-	for (i = 0; i < length; i++) {
-		sum = sum + array[i]*array[i];
-	}
-	double result = sqrt(sum);
-	printf("\n\nVector's length = %.4f\n", result);
-
-
-	int arrayn[nlength];
-	printf("\n\n\nCalculator of n-dimensional vector length\n");
-	printf("To calculate vector's length you should enter vector's coordinates");
-	for (i = 0; i < nlength; i++) {
-		printf("\nEnter vector's coordinate [%d] = ", i + 1);
-		scanf("%d", &arrayn[i]);
-	}
-	printf("\nCoordinates of vector: \n");
-	for (i = 0; i < nlength; i++) {
-		printf("%d ", arrayn[i]);
-	}
-
-	int sumn = 0;
-	for (i = 0; i < nlength; i++) {
-		sumn = sumn + arrayn[i] * arrayn[i];
-	}
-	double resultn = sqrt(sumn);
-	printf("\n\nVector's length = %.4f\n", resultn);
+	printf("\n\nInner product is %d", innerproduct);
+	printf("\nCross product is %d i + %d j + %d k", icross, jcross, kcross);
 
 	getchar();
 }
